@@ -35,6 +35,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 mongoose.set("strictQuery", false);
 
+// check if connected
+app.get("/connect", (req, res) => {
+  res.send({ message: "connected!" });
+});
+
 // routes
 app.get("/items", checkJWTToken, getProducts);
 app.get("/auth", checkJWTToken, getUser);
